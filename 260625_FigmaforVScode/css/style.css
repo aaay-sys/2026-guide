@@ -1,0 +1,369 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background-color: transparent;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+body {
+}
+
+html {
+  font-family: "Inconsolata", monospace;
+}
+
+/* ========================================
+   アクセシビリティ
+======================================== */
+
+/* visually-hidden：視覚的に非表示だがスクリーンリーダーには読まれるクラス */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ========================================
+   ヘッダー
+======================================== */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 4% 2% 0 2%;
+}
+
+.site-title {
+  color: #000;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.menu-button {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
+
+/* ========================================
+   コンテナ
+======================================== */
+
+.container {
+  margin: 0 10%;
+  align-items: center;
+}
+
+/* ========================================
+   ヒーロー / ファーストビュー
+======================================== */
+
+.first-img {
+  width: 287px;
+  height: 238px;
+  aspect-ratio: 41/34;
+  background: url(<path-to-image>) lightgray 50% / cover no-repeat;
+}
+
+/* ========================================
+   プロジェクト
+======================================== */
+
+.pj-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 118px;
+}
+
+.pj-top-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+}
+
+.pj-number {
+  display: flex;
+  width: 80px;
+  height: 30px;
+  flex-direction: column;
+  justify-content: center;
+  color: #7d7d7d;
+  text-align: center;
+  font-family: "Noto Sans JP";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 250%; /* 37.5px */
+  letter-spacing: 0.6px;
+}
+
+.pj-txt {
+  align-self: stretch;
+  color: #000;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 180%;
+}
+
+.button-more {
+  display: flex;
+  width: 157px;
+  padding: 10px 30px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 30px;
+  border: 1px solid #000;
+  cursor: pointer;
+}
+
+.link-arrow {
+}
+
+/* figure 要素になっても見た目は維持 */
+.pj-img {
+  /* display: flex;
+   justify-content: flex-end; */
+  height: 450px;
+  width: 100vw;
+  margin-right: calc(50% - 50vw);
+}
+
+.pj-img img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.pj-list {
+  display: flex;
+  align-items: flex-start;
+  align-content: flex-start;
+  gap: 32px 16px;
+  flex-wrap: wrap;
+  margin-top: 90px;
+}
+
+.pj-list > li {
+  min-width: 300px;
+  width: calc((100% - 16px) / 2);
+}
+
+.pj-list-solo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 25px;
+}
+
+.pj-img-solo {
+  width: 100%;
+  height: 300px;
+  background: #d9d9d9;
+}
+
+/* ========================================
+   アバウト
+======================================== */
+
+.about-img {
+  width: 100vw;
+  margin: calc(50% - 50vw);
+  margin-top: 100px;
+  margin-bottom: 50px;
+}
+
+.about-img img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.about-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 118px;
+}
+
+.sub-title {
+  color: #000;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 180%;
+  letter-spacing: 3px;
+}
+
+.about-txt {
+  color: #000;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 180%;
+}
+
+.about-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 65px;
+  margin: 122px 0;
+}
+
+.about-list_more {
+  display: flex;
+  align-items: center;
+  gap: 39px;
+  align-self: stretch;
+}
+
+.about-number {
+  color: #000;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 180%;
+  letter-spacing: 3px;
+}
+
+.about-list_more .about-txt {
+  width: 40%;
+}
+
+.about-list_more:nth-child(2) {
+  flex-direction: row-reverse;
+  text-align: end;
+}
+
+/* ========================================
+   ニュース
+======================================== */
+
+.news-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  margin-top: 45px;
+}
+
+.news-list-solo {
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+  border-bottom: 1px solid #000;
+  padding-bottom: 16px;
+}
+
+.news-list-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+}
+
+.news-pj-number {
+}
+
+.pj-title {
+  color: #000;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 180%;
+}
+
+/* ========================================
+   フッター
+======================================== */
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #000;
+  margin: 212px 0;
+  padding-top: 64px;
+}
+
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 86px;
+}
+
+.footer-title {
+  align-self: stretch;
+  color: #000;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.footer-txt {
+  color: #000;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 180%;
+}
+
+.footer-menu {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  align-self: stretch;
+}
+
+.footer-menu a {
+  color: #000;
+}
+
+.footer-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.footer-right nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.sns-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+  gap: 5px;
+  width: 100%;
+  color: #000;
+}
+
+.sns-name {
+  color: #000;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 180%;
+}
