@@ -1,0 +1,170 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #fff9f2;
+  font-family: "Noto Sans JP", sans-serif;
+  color: #555;
+}
+
+section {
+  width: 1100px;
+  margin: 120px auto;
+}
+
+/*------------------
+メイン
+-------------------*/
+
+.hero {
+  position: relative;
+}
+
+.sub-title {
+  display: inline-block;
+
+  padding: 12px 24px;
+
+  background: #f5ebdd;
+
+  border-radius: 30px;
+
+  font-size: 14px;
+}
+
+.hero-box {
+  position: relative;
+
+  width: 700px;
+
+  margin: 40px auto;
+}
+
+.green-box {
+  position: absolute;
+
+  left: -30px;
+  top: -20px;
+
+  width: 240px;
+  height: 180px;
+
+  background: #c8f1e8;
+}
+
+.main-img {
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.next {
+  margin-top: 20px;
+
+  background: #a9e8d7;
+
+  border: none;
+
+  border-radius: 30px;
+
+  padding: 12px 35px;
+
+  cursor: pointer;
+}
+
+/*------------------
+メッセージ
+-------------------*/
+
+.message-box {
+  width: 650px;
+
+  margin: auto;
+
+  background: #beeedf;
+
+  padding: 60px;
+
+  text-align: center;
+
+  line-height: 3;
+}
+
+/*------------------
+目次
+-------------------*/
+
+.contents {
+  text-align: center;
+}
+
+.contents h2 {
+  font-size: 56px;
+
+  margin-bottom: 60px;
+
+  letter-spacing: 8px;
+}
+
+.grid {
+  display: grid;
+
+  grid-template-columns: repeat(2, 300px);
+
+  justify-content: center;
+
+  gap: 25px;
+}
+
+.grid a {
+  background: #f3ebe0;
+
+  padding: 25px;
+
+  border-radius: 50px;
+
+  text-decoration: none;
+
+  color: #555;
+
+  transition: 0.3s;
+}
+
+.grid a:hover {
+  background: #a9e8d7;
+}
+
+/*------------------
+なぞなぞ
+-------------------*/
+
+.quiz-box {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  background: #a9e8d7;
+
+  padding: 30px;
+
+  border-radius: 50px;
+}
+
+.quiz button {
+  width: 140px;
+
+  height: 45px;
+
+  border: none;
+
+  border-radius: 30px;
+
+  background: white;
+
+  cursor: pointer;
+}
