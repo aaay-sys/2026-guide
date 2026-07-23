@@ -1,0 +1,389 @@
+/* ===================================================
+   1. 基本設定（PC・中間サイズ版）
+   =================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+  background-color: #faf8f5;
+  color: #5d4037;
+  display: flex;
+  justify-content: center;
+  overflow-x: hidden;
+
+   background-image: 
+    url("gazou.jpg");
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 1024px;
+  padding: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: #f3ebe1;
+  border-radius: 12px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  z-index: 10;
+
+   transition: background-color 0.3s ease, opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.home-btn:hover {
+  background-color: #f3ebe1;
+  opacity: 0.8;
+  transform: translateY(-1.5px);
+  box-shadow: 0 3px 8px rgba(93, 64, 55, 0.15);
+}
+.section-title {
+  font-size: 40px;
+  position: relative;
+  display: inline-block;
+  margin-top: 20px;
+  margin-bottom: 80px;
+  letter-spacing: 4px;
+  white-space: nowrap;
+}
+.section-title::before, .section-title::after {
+  content: "------";
+  color: #b2dfdb;
+  margin: 0 15px;
+  letter-spacing: -2px;
+}
+
+/* --- コンテンツレイアウト（PC・タブレット横並び版） --- */
+.tips-layout {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 1002px;
+  margin-bottom: 50px;
+}
+
+/* 吹き出しボックス（PC版） */
+.tips-card-container {
+  flex: 1.2;
+  min-height: 280px;
+  position: relative;
+  min-width: 0;
+}
+
+.tips-card {
+  display: none;
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  background-color: #b2dfdb;
+  clip-path: polygon(0 0, 85% 0, 100% 15%, 100% 100%, 0 100%);
+  padding: 30px 25px;
+  box-sizing: border-box;
+}
+
+.tips-card.active {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  animation: fadeIn 0.4s ease forwards;
+}
+
+.card-title {
+  font-size: clamp(16px, 2.3vw, 20px);
+  margin-bottom: 15px;
+  color: #5d4037;
+}
+
+.card-text {
+  font-size: clamp(11.5px, 1.5vw, 13.5px);
+  line-height: 1.8;
+  font-weight: bold;
+  color: #5d4037;
+}
+
+/* 画像エリア（PC版） */
+.visual-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  flex: 1;
+  min-width: 0;
+}
+
+.image-window {
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 1 / 1;
+  border: 4px double #bcaaa4;
+  background-color: #ffffff;
+  padding: 12px;
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.slide-img {
+  position: absolute;
+  width: calc(100% - 20px);
+  height: calc(100% - 20px);
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.slide-img.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* 矢印ボタン */
+.arrow-btn {
+  background-color: #c8e6c9;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  transition: background-color 0.2s, transform 0.2s;
+}
+.arrow-btn:hover {
+  background-color: #a5d6a7;
+  transform: scale(1.1);
+}
+
+.arrow-icon {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-top: 3px solid #4caf50;
+  border-right: 3px solid #4caf50;
+}
+.prev-btn .arrow-icon { transform: rotate(-45deg); margin-top: 3px; }
+.next-btn .arrow-icon { transform: rotate(135deg); margin-bottom: 3px; }
+
+/* --- なぞなぞボックス --- */
+/* --- なぞなぞボックス（PC版） --- */
+.nazonazo-box {
+  width: 100%;
+  max-width: 1100px;
+  background-color: #b2dfdb;
+  border-radius: 30px;
+  padding: 20px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto 60px auto;
+
+  height: 90px; /* 💡 min-height ではなく height で高さを完全に固定！ */
+  overflow: visible; /* 💡 ボタンが飛び出しても箱の高さには影響させない */
+}
+.nazonazo-content h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.nazonazo-content p {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* --- 答えボタン（アニメーション対応版） --- */
+.answer-btn {
+  background-color: #f3ebe1;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 15px;
+  font-size: 14px;
+  cursor: pointer;
+  color: #5d4037;
+  font-weight: bold;
+  
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  line-height: 1.4;
+
+  transition: all 0.4s ease;
+}
+
+/* マウスを乗せたとき（未クリック状態） */
+.answer-btn:not(.is-open):hover {
+  opacity: 0.8;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(112, 140, 138, 0.3);
+}
+
+/* クリックして答えが開いたときの状態 */
+.answer-btn.is-open {
+  background-color: #f3ebe1;
+  padding: 10px 30px;
+  transform: scale(1.18);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  cursor: default;
+}
+
+/* フッター */
+.footer-note {
+  width: 100%;
+  max-width: 250px;
+  border: 1px solid #e0d7cd;
+  padding: 8px;
+  text-align: center;
+  font-size: 10px;
+  color: #8d6e63;
+  margin-bottom: 20px;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ===================================================
+   2. スマホ版設定（画面幅 550px 以下）
+   =================================================== */
+@media (max-width: 550px) {
+  .container { padding: 40px 15px; }
+  .home-btn { top: 15px; right: 15px; padding: 8px; }
+
+  .section-title { font-size: 33px; margin-bottom: 45px; }
+  .section-title::before, .section-title::after { content: "---"; margin: 0 8px; }
+
+  .tips-layout {
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+  }
+
+  .tips-card-container { width: 100%; min-width: auto; min-height: auto; }
+
+  .tips-card {
+    border-radius: 25px;
+    clip-path: none;
+    padding: 25px 20px;
+    position: relative;
+    min-height: auto;
+  }
+  .tips-card::after {
+    content: "";
+    position: absolute;
+    bottom: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-style: solid;
+    border-width: 18px 14px 0 14px;
+    border-color: #b2dfdb transparent transparent transparent;
+  }
+
+  .card-title { font-size: 16px; text-align: center; margin-bottom: 10px; }
+  .card-text { font-size: 12px; text-align: left; }
+
+  .visual-container {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    margin-top: 15px;
+  }
+
+  .slide-img {
+  position: absolute;
+  width: calc(100% - 10px);
+  height: calc(100% - 10px);
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+  .image-window {
+    width: 240px;
+    max-width: 240px;
+    height: 240px;
+    flex-shrink: 0;
+  }
+
+  .prev-btn .arrow-icon { transform: rotate(-135deg); margin-top: 0; margin-left: 3px; }
+  .next-btn .arrow-icon { transform: rotate(45deg); margin-bottom: 0; margin-right: 3px; }
+
+/* 💡 なぞなぞボックス（高さを少しゆったりさせて、内側の余白を均等に） */
+  .nazonazo-box {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 15px; /* 上下のパディングで内側に余裕を作る */
+    border-radius: 20px;
+    margin-bottom: 40px;
+    width: 100%;
+    min-height: 80px; /* 固定高さではなく、崩れない最低高さに設定 */
+    overflow: visible;
+  }
+
+  .nazonazo-content {
+    text-align: left;
+    flex: 1; /* 左側のテキスト領域を柔軟に伸縮 */
+  }
+
+  .nazonazo-content h3 {
+    font-size: 14px;
+    margin-bottom: 3px;
+  }
+
+  .nazonazo-content p {
+    font-size: 11px;
+    line-height: 1.3;
+  }
+
+  /* 💡 答えボタン（開く前） */
+  .answer-btn,
+  .answer-btn:not(.is-open) {
+    width: auto;
+    min-width: 65px;
+    padding: 8px 12px;
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+
+  /* 💡 答えが開いた時（右側の画像のようにすっきり収める！） */
+  .answer-btn.is-open {
+    padding: 8px 17px;     /* 上下の余白を詰めて縦伸びを防止 */
+    font-size: 11px;       /* 文字サイズをほんの少し小さくして収まり良く */
+    line-height: 1.3;      /* 行間を詰める */
+    max-width: 170px;      /* 横幅を広げて無理な3行改行を防ぐ */
+    margin-right: 5px;     /* 右端の余白調整 */
+    transform: scale(1.02);/* はみ出さないように拡大率は控えめ */
+    word-break: normal;    /* 自然な位置で改行 */
+  }
+}

@@ -1,0 +1,515 @@
+/* --- 全体ベーススタイル --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+  background-color: #faf8f5;
+  color: #5d4037;
+  display: flex;
+  justify-content: center;
+  overflow-x: hidden; /* 画面外への予期せぬはみ出しを完全に防ぐ安全ガード */
+  /* 👇 画像の上に「70%の濃さのベース色(#faf8f5)」を重ねて画像を薄く見せる指定 */
+  background-image: 
+    url("gazou.jpg");
+}
+
+/* メインコンテナ */
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 1024px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ホームボタン */
+.home-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: #f3ebe1;
+  border-radius: 12px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  z-index: 10;
+  transition: background-color 0.3s ease, opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.home-btn:hover {
+  background-color: #f3ebe1;
+  opacity: 0.8;
+  transform: translateY(-1.5px);
+  box-shadow: 0 3px 8px rgba(93, 64, 55, 0.15);
+}
+
+/* --- タイトルエリア --- */
+.title-wrapper {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 10px 20px;
+}
+
+.section-title {
+  font-size: 24px;
+  position: relative;
+  letter-spacing: 4px;
+  text-align: center;
+}
+
+.section-title::before, 
+.section-title::after {
+  content: "------";
+  color: #b2dfdb;
+  margin: 0 15px;
+  letter-spacing: -2px;
+}
+
+/* --- intro-text 周りの四角形装飾エリア --- */
+.intro-wrapper {
+  position: relative;
+  margin-bottom: 60px;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 550px;
+  width: 100%;
+}
+
+.intro-text {
+  position: relative;
+  z-index: 2; /* 四角形装飾の上に文字を表示 */
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1.8;
+  padding: 5px 10px;
+}
+
+/* intro背景のプカプカ四角形（四隅配置） */
+.deco-square {
+  position: absolute;
+  background-color: #b2dfdb;
+  opacity: 0.5;
+  z-index: 1;
+  border-radius: 4px;
+}
+
+.square1 { 
+  width: 25px; 
+  height: 25px; 
+  left: 0px; 
+  top: -5px; 
+  transform: rotate(15deg); 
+  background-color: #b2dfdb;
+}
+
+.square2 { 
+  width: 18px; 
+  height: 18px; 
+  left: 15px; 
+  bottom: -5px; 
+  transform: rotate(-10deg); 
+  background-color: #b2dfdb;
+}
+
+.square3 { 
+  width: 30px; 
+  height: 30px; 
+  right: 0px; 
+  top: -8px; 
+  transform: rotate(8deg); 
+  background-color: #b2dfdb;
+}
+
+.square4 { 
+  width: 16px; 
+  height: 16px; 
+  right: 20px; 
+  bottom: -5px; 
+  transform: rotate(45deg); 
+  background-color: #b2dfdb;
+}
+
+/* ===================================================
+   📱 デフォルト：スマホ版ベース (402px以下基準)
+   =================================================== */
+.episode-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+/* 右上カットの点線エピソードカード */
+.episode-card {
+  width: 100%;
+  background-color: #efebe9;
+  padding: 2px;
+  position: relative;
+  clip-path: polygon(0 0, 88% 0, 100% 12%, 100% 100%, 0 100%);
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  border: 1.5px dashed #bcaaa4;
+  clip-path: polygon(0 0, 88% 0, 100% 12%, 100% 100%, 0 100%);
+  padding: 25px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+/* 画像エリア設定 */
+.image-area {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 15px;
+  width: 100%;
+}
+
+.img-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+}
+
+.img-wrapper span {
+  font-size: 9px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+/* 丸い画像枠 */
+.circle-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #d7ccc8;
+  overflow: hidden;
+  border: 2px solid #fff;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* テキストエリア設定 */
+.text-area {
+  font-size: 11.5px;
+  font-weight: bold;
+  line-height: 1.8;
+  text-align: justify;
+}
+
+.text-area p {
+  margin-bottom: 10px;
+}
+
+.text-area p:last-child {
+  margin-bottom: 0;
+}
+
+/* --- なぞなぞ --- */
+.nazonazo-box {
+  width: 100%;
+  max-width: 700px;
+  background-color: #b2dfdb;
+  border-radius: 35px;
+  border: 1px dashed #80cbc4;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: center;
+  margin-bottom: 40px;
+  min-height: 90px;  /* 箱の高さを固定化 */
+  overflow: visible; /* アニメーションでの飛び出しを許可 */
+}
+
+.nazonazo-left h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+  letter-spacing: 2px;
+}
+
+.nazonazo-left p {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* --- 答えボタン（トップページ共通・アニメーション対応版） --- */
+.answer-btn {
+  background-color: #f3ebe1;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 15px;
+  font-size: 14px;
+  cursor: pointer;
+  color: #5d4037;
+  font-weight: bold;
+  
+  /* 2行テキストでも綺麗に中央配置する設定 */
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  line-height: 1.4;
+
+  /* ふわっと滑らかに動かす設定 */
+  transition: all 0.4s ease;
+}
+
+/* マウスを乗せたとき（未クリック状態） */
+.answer-btn:not(.is-open):hover {
+  opacity: 0.8;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(112, 140, 138, 0.3);
+}
+
+/* クリックして答えが開いたときの状態 */
+.answer-btn.is-open {
+  background-color: #f3ebe1;
+  padding: 10px 30px;     /* 通常時と同じサイズ */
+  transform: scale(1.18); /* 代わりに拡大率を上げて「ぽよっ」とさせる */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  cursor: default;
+}
+
+/* --- フッター --- */
+.footer-note {
+  width: 100%;
+  max-width: 250px;
+  border: 1px solid #e0d7cd;
+  padding: 8px;
+  text-align: center;
+  font-size: 10px;
+  color: #8d6e63;
+  margin-bottom: 20px;
+}
+
+/* ===================================================
+   💻 PC版・タブレット版 (550px以上〜1024px)
+   =================================================== */
+@media (min-width: 550px) {
+  .section-title { 
+    font-size: 28px; 
+    margin-bottom: 70px;
+  }
+
+  .intro-text {
+    font-size: 13.5px;
+  }
+
+  .intro-wrapper {
+    margin-bottom: 80px;
+  }
+
+  .episode-layout {
+    gap: 45px;
+    max-width: 750px;
+  }
+
+  .episode-card {
+    clip-path: polygon(0 0, 88% 0, 100% 12%, 100% 100%, 0 100%);
+  }
+
+  .card-inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 35px 30px;
+    clip-path: polygon(0 0, 88% 0, 100% 12%, 100% 100%, 0 100%);
+  }
+
+  .image-area {
+    width: auto;
+    flex-shrink: 0;
+    position: relative;
+    height: 120px;
+    width: 180px;
+  }
+  
+  .image-area .img-wrapper {
+    position: absolute;
+  }
+
+  /* どんぐり（大・上側） */
+  .image-area .thumb-donguri {
+    left: 60px;
+    top: -10px;
+    z-index: 2;
+  }
+  .image-area .thumb-donguri .circle-img {
+    width: 95px;
+    height: 95px;
+  }
+
+  /* お守り（小・左下側） */
+  .image-area .thumb-omamori {
+    left: 0px;
+    bottom: -5px;
+    z-index: 3;
+  }
+  .image-area .thumb-omamori .circle-img {
+    width: 75px;
+    height: 75px;
+  }
+
+  .text-area {
+    flex: 1;
+    font-size: 12.5px;
+    line-height: 1.9;
+  }
+
+  .nazonazo-box {
+    flex-direction: row;
+    padding: 20px 40px;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .nazonazo-left {
+    text-align: left;
+  }
+
+  .answer-btn {
+    width: auto;
+    flex-shrink: 0;
+  }
+}
+
+/* ===================================================
+   📐 中間地点レスポンシブ（画面幅 768px 〜 500px 付近）
+   =================================================== */
+@media (max-width: 768px) {
+  .container {
+    padding: 30px 20px;
+  }
+
+  @media (max-width: 680px) and (min-width: 403px) {
+    .card-inner {
+      flex-direction: column;
+      gap: 20px;
+      padding: 25px 20px;
+    }
+    .image-area {
+      position: relative;
+      margin: 10px 0;
+    }
+    .text-area {
+      font-size: 12px;
+      text-align: center;
+    }
+  }
+}
+
+/* ===================================================
+   📱 スマホ専用の微調整（550px以下）
+   =================================================== */
+@media (max-width: 550px) {
+  .container {
+    padding: 20px 15px;
+  }
+
+  .home-btn {
+    top: 15px;
+    right: 15px;
+    padding: 8px;
+  }
+
+  .section-title {
+    font-size: 20px;
+    margin-bottom: 25px;
+  }
+
+  .section-title::before, 
+  .section-title::after {
+    content: "---";
+    margin: 0 5px;
+  }
+
+  .intro-text {
+    font-size: 11px;
+  }
+
+  .intro-wrapper {
+    margin-bottom: 30px;
+  }
+
+  .episode-layout {
+    gap: 25px;
+  }
+
+  .card-inner {
+    padding: 20px 15px;
+  }
+
+  .text-area {
+    font-size: 11px;
+  }
+
+  .nazonazo-box {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 15px;
+    border-radius: 20px;
+    margin-bottom: 35px;
+    width: 100%;
+    min-height: 80px;
+  }
+
+  .nazonazo-left h3 {
+    font-size: 14px;
+    margin-bottom: 3px;
+  }
+
+  .nazonazo-left p {
+    font-size: 11px;
+    line-height: 1.3;
+  }
+
+  /* スマホ版答えボタン */
+  .answer-btn,
+  .answer-btn:not(.is-open) {
+    width: auto;
+    min-width: 65px;
+    padding: 8px 12px;
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+
+  .answer-btn.is-open {
+    padding: 8px 17px;
+    font-size: 11px;
+    line-height: 1.3;
+    max-width: 170px;
+    margin-right: 5px;
+    transform: scale(1.02); /* スマホ崩れを防ぐため拡大率は控えめ */
+  }
+}

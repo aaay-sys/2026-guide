@@ -1,0 +1,410 @@
+/* ===================================================
+   1. 全体ベーススタイル
+   =================================================== */
+*, 
+*::before, 
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+  background-color: #faf8f5;
+  color: #5d4037;
+  display: flex;
+  justify-content: center;
+  overflow-x: hidden;
+  width: 100%;
+
+   background-image: 
+    url("gazou.jpg");
+}
+
+/* メインコンテナ */
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 1024px;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ホームボタン */
+.home-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: #f3ebe1;
+  border-radius: 12px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  z-index: 10;
+  transition: background-color 0.3s ease, opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.home-btn:hover {
+  opacity: 0.8;
+  transform: translateY(-1.5px);
+  box-shadow: 0 3px 8px rgba(93, 64, 55, 0.15);
+}
+
+/* セクションタイトル */
+.section-title {
+  font-size: 30px;
+  position: relative;
+  display: inline-block;
+  margin-top: 20px;
+  margin-bottom: 80px;
+  letter-spacing: 4px;
+  text-align: center;
+}
+
+.section-title::before,
+.section-title::after {
+  content: "-----";
+  color: #b2dfdb;
+  margin: 0 10px;
+  letter-spacing: 0px;
+}
+
+
+/* ===================================================
+   2. Q&A タイムライン ＆ 吹き出し（ホバーアニメーション）
+   =================================================== */
+.qa-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  width: 100%;
+  margin-bottom: 70px;
+}
+
+.cloud-item {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+}
+
+/* 長丸ボックス */
+.cloud-bubble {
+  position: relative;
+  background: #efebe9;
+  border-radius: 50px; 
+  padding: 22px 20px;
+  width: 85%;
+  max-width: 310px; 
+  text-align: center;
+  box-shadow: 0 8px 0 #d7ccc8; 
+  margin: 0 auto;
+  cursor: pointer;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), 
+              box-shadow 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* 非表示要素の一括指定 */
+.cloud-bubble::before,
+.cloud-bubble::after,
+.question-text::before,
+.question-text::after {
+  display: none;
+}
+
+/* 吹き出しタイトルテキスト */
+.question-text {
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+/* 矢印アイコン（初期状態：下向き∨） */
+.arrow-icon {
+  width: 12px;
+  height: 12px;
+  border-bottom: 2px solid #5d4037;
+  border-right: 2px solid #5d4037;
+  transform: rotate(45deg);
+  margin: 10px auto 0 auto;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* 回答エリア（初期状態：非表示） */
+.answer-content {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+              opacity 0.5s ease-out;
+}
+
+/* 回答テキスト */
+.answer-text {
+  font-size: 11px;
+  color: #5d4037;
+  font-weight: normal;
+  text-align: left;
+  line-height: 1.6;
+  margin-top: 15px;
+  padding-top: 5px;
+}
+
+/* マウスホバーで開くアニメーション (:hover) */
+.cloud-bubble:hover {
+  box-shadow: 0 12px 0 #c7bcaf;
+  transform: translateY(-4px);
+}
+
+.cloud-bubble:hover .arrow-icon {
+  transform: rotate(-135deg);
+}
+
+.cloud-bubble:hover .answer-content {
+  max-height: 300px;
+  opacity: 1;
+}
+
+/* 吹き出しのドット装飾（親コンテナ） */
+.cloud-dots {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  bottom: -20px;
+  filter: drop-shadow(0 4px 0 #d7ccc8);
+}
+
+.cloud-dots span {
+  background-color: #efebe9;
+  border-radius: 50%;
+  display: block;
+}
+
+.dot-medium { width: 23px; height: 23px; }
+.dot-small  { width: 15px; height: 15px; }
+
+/* ジグザグ配置：左 */
+.align-left .cloud-bubble { margin-left: 20px; }
+.align-left .cloud-dots { 
+  left: 20px; 
+  flex-direction: row; 
+}
+.align-left .dot-small {
+  margin-left: 0;
+  margin-right: 18px;
+  margin-top: 12px;
+}
+
+/* ジグザグ配置：右 */
+.align-right .cloud-bubble { margin-right: 20px; }
+.align-right .cloud-dots { 
+  right: 20px; 
+  flex-direction: row-reverse; 
+}
+.align-right .dot-small {
+  margin-left: 18px;
+  margin-top: 10px;
+}
+
+
+/* ===================================================
+   3. なぞなぞ ＆ フッター（完全に動かさない設定）
+   =================================================== */
+/* --- なぞなぞボックス --- */
+.nazonazo-box {
+  width: 100%;
+  max-width: 1100px;
+  background-color: #b2dfdb;
+  border-radius: 30px;
+  padding: 20px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto 60px auto;
+
+  /* 💡 ここを追加！ */
+  min-height: 90px;  /* 箱の高さを一定にして押し広げられるのを防ぐ */
+  overflow: visible; /* ボタンが大きく膨らんでも外枠に影響を与えないようにする */
+}
+
+.nazonazo-content h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.nazonazo-content p {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* --- 答えボタン（アニメーション対応版） --- */
+.answer-btn {
+  background-color: #f3ebe1;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 15px;
+  font-size: 14px;
+  cursor: pointer;
+  color: #5d4037;
+  font-weight: bold;
+  
+  /* 2行テキストでも綺麗に中央配置する設定 */
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  line-height: 1.4;
+
+  /* ふわっと滑らかに動かす設定 */
+  transition: all 0.4s ease;
+}
+
+/* マウスを乗せたとき（未クリック状態） */
+.answer-btn:not(.is-open):hover {
+  opacity: 0.8;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(112, 140, 138, 0.3);
+}
+
+/* クリックして答えが開いたときの状態 */
+.answer-btn.is-open {
+  background-color: #f3ebe1;
+  
+  /* 💡 padding（余白）で広げるのをやめて、transformの拡大だけにする */
+  padding: 10px 30px; /* 通常時と同じサイズに戻す */
+  transform: scale(1.18); /* 代わりに拡大率を少し上げて「ぽよっ」とさせる */
+  
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  cursor: default;
+}
+
+.footer-note {
+  width: 100%;
+  max-width: 250px;
+  border: 1px solid #e0d7cd;
+  padding: 8px;
+  text-align: center;
+  font-size: 10px;
+  color: #8d6e63;
+  margin-bottom: 20px;
+}
+/* ===================================================
+   5. レスポンシブ：コンパクトスマホ（550px 以下）
+   =================================================== */
+@media (max-width: 550px) {
+  .nazonazo-box {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    padding: 15px 15px;
+    border-radius: 20px;
+    margin-bottom: 40px;
+    width: 100%;
+  }
+
+  .nazonazo-content {
+    text-align: left;
+    flex: 1;
+  }
+
+  .nazonazo-content h3 {
+    font-size: 14px;
+    margin-bottom: 3px;
+  }
+
+  .nazonazo-content p {
+    font-size: 11px;
+    line-height: 1.3;
+  }
+
+  /* スマホ用ボタンサイズ固定 */
+  .answer-btn {
+    width: 100px;
+    height: 42px;
+    font-size: 12px;
+    padding: 0 5px;
+  }
+
+   /* 💡 答えが開いた時（右側の画像のようにすっきり収める！） */
+  .answer-btn.is-open {
+    padding: 3px 3px;     /* 上下の余白を詰めて縦伸びを防止 */
+    font-size: 11px;       /* 文字サイズをほんの少し小さくして収まり良く */
+    line-height: 1.3;      /* 行間を詰める */
+    max-width: 220px;      /* 横幅を広げて無理な3行改行を防ぐ */
+    margin-right: 5px;     /* 右端の余白調整 */
+    transform: scale(1.02);/* はみ出さないように拡大率は控えめ */
+    word-break: normal;    /* 自然な位置で改行 */
+  }
+}
+
+
+
+
+/* ===================================================
+   6. レスポンシブ：PC・大画面（551px 以上）
+   =================================================== */
+@media (min-width: 551px) {
+  .section-title {
+    font-size: 40px;
+    margin-bottom: 110px;
+  }
+
+  .qa-timeline {
+    gap: 45px;
+    margin-bottom: 110px;
+  }
+
+  /* 吹き出しの大型化 */
+  .cloud-bubble {
+    width: 100%;
+    max-width: 480px;
+    padding: 30px 40px;
+    border-radius: 60px;
+  }
+
+  .question-text { font-size: 15px; letter-spacing: 1px; }
+  .arrow-icon { width: 14px; height: 14px; margin-top: 15px; }
+  .answer-text { font-size: 13.5px; }
+
+  /* ドットサイズ調整 */
+  .dot-medium { width: 30px; height: 30px; }
+  .dot-small  { width: 20px; height: 20px; }
+
+  /* PC向け左右ジグザグレイアウト */
+  .align-left { align-items: flex-start; }
+  .align-left .cloud-bubble { margin-left: 40px; }
+  .align-left .cloud-dots { left: 15px; bottom: -25px; }
+  .align-left .dot-small { margin-right: 25px; margin-top: 18px; }
+
+  .align-right { align-items: flex-end; }
+  .align-right .cloud-bubble { margin-right: 40px; }
+  .align-right .cloud-dots { right: 15px; bottom: -25px; }
+  .align-right .dot-small { margin-left: 25px; margin-top: 18px; }
+
+  /* なぞなぞ表示切り替え */
+  .nazonazo-sp { display: none; }
+  .nazonazo-pc { display: block; font-size: 15px; font-weight: bold; }
+
+  /* 💡 PC版の高さブレ防止設定 */
+  .nazonazo-box {
+    flex-direction: row;
+    padding: 20px 40px;
+    justify-content: space-between;
+    align-items: center; /* 💡 上下中央を確実に固定 */
+    min-height: 100px;  /* 💡 PC版でも最小高さを保証して枠の伸縮を抑える */
+    border-radius: 40px;
+    gap: 20px;
+  }
+
+  .answer-btn {
+    width: auto;
+    min-width: 100px;  /* 💡 ボタン自体の横幅もブレないよう最小幅を指定 */
+    flex-shrink: 0;
+  }
+}

@@ -1,0 +1,470 @@
+/* ===================================================
+   🏠 共通ベーススタイル & PC・大画面
+   =================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* 💡 ページ内のリンク移動をすべて滑らかにする設定 */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  background-color: #faf8f5;
+  color: #5d4037;
+  display: flex;
+  justify-content: center;
+  overflow-x: hidden;
+
+  /* 👇 画像の上に「70%の濃さのベース色(#faf8f5)」を重ねて画像を薄く見せる指定 */
+  background-image: 
+    url("gazou.jpg");
+}
+/* 外枠コンテナ */
+.container {
+  width: 100%;
+  padding: 40px 40px 80px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dummy-text {
+  font-size: 10px;
+  color: #aaa;
+}
+
+/* 🏷️ ヘッダーバッジ */
+.header-badge {
+  background-color: #f3ebe1;
+  border-radius: 40px;
+  padding: 10px 40px;
+  font-size: 14px;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 35px;
+  width: fit-content;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  align-self: center;
+  display: block;
+  margin-left: calc(50% - 400px);
+  transition: all 0.3s ease;
+}
+
+/* ===================================================
+   📸 メインビジュアルエリア & 四角形装飾
+   =================================================== */
+.main-visual-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 30px auto;
+  display: flex;
+  justify-content: center;
+}
+
+.main-image {
+  position: relative;
+  width: 90%;
+  max-width: 1000px;
+  z-index: 2;
+}
+
+.mv-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.mv-text-content {
+  position: absolute;
+  top: 34%;
+  left: 21.5%;
+  transform: translate(-50%, -50%);
+  width: 40%;
+  text-align: center;
+  z-index: 5;
+}
+
+.mv-text-content p {
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.4;
+  color: #5d4037;
+}
+
+/* 背景の破線付き水色ボックス */
+.bg-box {
+  position: absolute;
+  background-color: #e0f2f1;
+  border: 1px dashed #b2dfdb;
+  z-index: 1;
+}
+
+.bg-box-left {
+  width: 50%;
+  height: 65%;
+  left: -40px;
+  top: -25px;
+}
+
+.bg-box-right {
+  width: 30%;
+  height: 40%;
+  right: -50px;
+  bottom: -30px;
+}
+
+/* 💡 メインビジュアル左右に浮かべる四角形パーツ */
+.deco-square {
+  position: absolute;
+  background-color: #b2dfdb;
+  opacity: 0.6;
+  z-index: 3;
+  border-radius: 4px;
+}
+
+/* 左上 */
+.square1 {
+  width: 26px;
+  height: 26px;
+  left: -25px;
+  top: -15px;
+  transform: rotate(15deg);
+}
+
+/* 左下 */
+.square2 {
+  width: 18px;
+  height: 18px;
+  left: -15px;
+  bottom: -10px;
+  transform: rotate(-10deg);
+}
+
+/* 右上 */
+.square3 {
+  width: 30px;
+  height: 30px;
+  right: -30px;
+  top: -20px;
+  transform: rotate(8deg);
+}
+
+/* 右下 */
+.square4 {
+  width: 16px;
+  height: 16px;
+  right: -20px;
+  bottom: -15px;
+  transform: rotate(45deg);
+}
+
+/* ===================================================
+   📦 下部コンテンツ（PC時）
+   =================================================== */
+.btn-wrapper {
+  width: 100%;
+  max-width: 600px;
+  margin: -40px auto 20px auto;
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 20px;
+  z-index: 4;
+}
+
+.anchor-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  width: 100%;
+  max-width: 200px;
+  height: 50px;
+  border-radius: 100px;
+  background: #b2dfdb !important;
+  color: #6b5845;
+  font-family: Inter, sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  border: none;
+
+  transition: background-color 0.3s ease, opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.anchor-btn:hover {
+  background-color: #b2dfdb;
+  opacity: 0.85;
+  transform: translateY(-2px);
+  box-shadow: 0 3px 3px rgba(93, 64, 55, 0.15);
+}
+
+.intro-box {
+  width: 100%;
+  max-width: 1100px;
+  background-color: #b2dfdb;
+  border: 2px dashed #bfafa1;
+  padding: 30px 20px;
+  text-align: center;
+  font-size: 16px;
+  line-height: 2;
+  margin: 0 auto 80px auto;
+  font-weight: bold;
+}
+
+.contents-section {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-title {
+  font-size: 28px;
+  position: relative;
+  display: inline-block;
+  margin-bottom: 40px;
+  letter-spacing: 4px;
+}
+
+.section-title::before,
+.section-title::after {
+  content: "-----";
+  color: #b2dfdb;
+  margin: 0 10px;
+  letter-spacing: 0px;
+}
+
+/* --- グリッドメニュー --- */
+.grid-menu {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 60px auto;
+}
+
+.menu-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f3ebe1;
+  color: #5d4037;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  height: 70px;
+  border-radius: 35px;
+  letter-spacing: 2px;
+
+  transition: background-color 0.3s ease, opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-item:hover {
+  background-color: #f3ebe1;
+  opacity: 0.6;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(93, 64, 55, 0.15);
+}
+
+/* --- なぞなぞボックス --- */
+.nazonazo-box {
+  width: 100%;
+  max-width: 1100px;
+  background-color: #b2dfdb;
+  border-radius: 30px;
+  padding: 20px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto 60px auto;
+
+  /* 💡 ここを追加！ */
+  min-height: 90px;  /* 箱の高さを一定にして押し広げられるのを防ぐ */
+  overflow: visible; /* ボタンが大きく膨らんでも外枠に影響を与えないようにする */
+}
+
+.nazonazo-content h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.nazonazo-content p {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* --- 答えボタン（アニメーション対応版） --- */
+.answer-btn {
+  background-color: #f3ebe1;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 15px;
+  font-size: 14px;
+  cursor: pointer;
+  color: #5d4037;
+  font-weight: bold;
+  
+  /* 2行テキストでも綺麗に中央配置する設定 */
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  line-height: 1.4;
+
+  /* ふわっと滑らかに動かす設定 */
+  transition: all 0.4s ease;
+}
+
+/* マウスを乗せたとき（未クリック状態） */
+.answer-btn:not(.is-open):hover {
+  opacity: 0.8;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(112, 140, 138, 0.3);
+}
+
+/* クリックして答えが開いたときの状態 */
+.answer-btn.is-open {
+  background-color: #f3ebe1;
+  
+  /* 💡 padding（余白）で広げるのをやめて、transformの拡大だけにする */
+  padding: 10px 30px; /* 通常時と同じサイズに戻す */
+  transform: scale(1.18); /* 代わりに拡大率を少し上げて「ぽよっ」とさせる */
+  
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  cursor: default;
+}
+
+.footer-note {
+  width: 100%;
+  max-width: 250px;
+  border: 1px solid #e0d7cd;
+  padding: 8px;
+  text-align: center;
+  font-size: 10px;
+  color: #8d6e63;
+  margin-bottom: 20px;
+}
+
+/* ===================================================
+   📐 中間レスポンシブ（768px 以下）
+   =================================================== */
+@media (max-width: 768px) {
+  .container {
+    padding: 30px 20px 60px 20px;
+  }
+
+  .header-badge {
+    padding: 8px 50px;
+    margin-left: 0;
+  }
+}
+
+/* ===================================================
+   📱 スマホ用一括縮小（402px 以下）
+   =================================================== */
+@media (max-width: 550px) {
+  .container {
+    padding: 20px 15px 40px 15px;
+  }
+
+  .header-badge {
+    font-size: 12px;
+    padding: 8px 20px;
+    margin-left: 10px;
+    margin-bottom: 45px;
+  }
+
+  .square1 { left: -5px; top: -10px; }
+  .square2 { left: -2px; bottom: 0px; }
+  .square3 { right: -5px; top: -10px; }
+  .square4 { right: -2px; bottom: -5px; }
+
+  .intro-box {
+    padding: 15px 10px;
+    font-size: 13px;
+    margin-bottom: 40px;
+  }
+
+  .section-title {
+    font-size: 20px;
+    margin-bottom: 25px;
+  }
+
+ 
+/* 💡 なぞなぞボックス（高さを少しゆったりさせて、内側の余白を均等に） */
+  .nazonazo-box {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 15px; /* 上下のパディングで内側に余裕を作る */
+    border-radius: 20px;
+    margin-bottom: 40px;
+    width: 100%;
+    min-height: 80px; /* 固定高さではなく、崩れない最低高さに設定 */
+    overflow: visible;
+  }
+
+  .nazonazo-content {
+    text-align: left;
+    flex: 1; /* 左側のテキスト領域を柔軟に伸縮 */
+  }
+
+  .nazonazo-content h3 {
+    font-size: 14px;
+    margin-bottom: 3px;
+  }
+
+  .nazonazo-content p {
+    font-size: 11px;
+    line-height: 1.3;
+  }
+
+  /* 💡 答えボタン（開く前） */
+  .answer-btn,
+  .answer-btn:not(.is-open) {
+    width: auto;
+    min-width: 65px;
+    padding: 8px 12px;
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+
+  /* 💡 答えが開いた時（右側の画像のようにすっきり収める！） */
+  .answer-btn.is-open {
+    padding: 8px 17px;     /* 上下の余白を詰めて縦伸びを防止 */
+    font-size: 11px;       /* 文字サイズをほんの少し小さくして収まり良く */
+    line-height: 1.3;      /* 行間を詰める */
+    max-width: 170px;      /* 横幅を広げて無理な3行改行を防ぐ */
+    margin-right: 5px;     /* 右端の余白調整 */
+    transform: scale(1.02);/* はみ出さないように拡大率は控えめ */
+    word-break: normal;    /* 自然な位置で改行 */
+  }
+
+  .grid-menu {
+    gap: 30px;
+    margin-bottom: 40px;
+  }
+
+  .menu-item {
+    aspect-ratio: 1 / 1;
+    height: auto;
+    border-radius: 50%;
+    font-size: 14px;
+    padding: 5px;
+    letter-spacing: 0;
+  }
+
+  .footer-note {
+    font-size: 10px;
+  }
+}

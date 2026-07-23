@@ -1,0 +1,425 @@
+/* --- 全体ベーススタイル --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+  background-color: #faf8f5; /* 全体アイボリー */
+  color: #5d4037;
+  display: flex;
+  justify-content: center;
+  overflow-x: hidden;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 1024px;
+  padding: 40px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* --- ホームボタン --- */
+.home-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: #f3ebe1;
+  border-radius: 12px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  z-index: 10;
+  transition: background-color 0.3s ease, opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.home-btn:hover {
+  background-color: #f3ebe1;
+  opacity: 0.8;
+  transform: translateY(-1.5px);
+  box-shadow: 0 3px 8px rgba(93, 64, 55, 0.15);
+}
+
+/* --- タイトル --- */
+.section-title {
+  font-size: 40px;
+  position: relative;
+  display: inline-block;
+  margin-top: 20px;
+  margin-bottom: 100px;
+  letter-spacing: 4px;
+  text-align: center;
+}
+.section-title::before,
+.section-title::after {
+  content: "------";
+  color: #b2dfdb;
+  margin: 0 15px;
+  letter-spacing: 0px;
+}
+
+/* --- メリット共通セクション --- */
+.merit-section {
+  width: 100%;
+  max-width: 1000px;
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* 茶色の外枠（そのままのサイズを保持） */
+.content-box {
+  width: 100%;
+  background-color: #faf8f5;
+  border: 1px solid #d7ccc8;
+  padding: 30px 40px;
+}
+
+/* --- バッジ装飾 --- */
+.badge-best3 {
+  background-color: #f3ebe1;
+  border: 1px solid #a1887f;
+  border-radius: 6px;
+  padding: 6px 30px;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 4px;
+  margin-bottom: 15px;
+}
+
+.badge-others {
+  background-color: #faf8f5;
+  border: 1px dashed #b2dfdb;
+  border-radius: 6px;
+  padding: 6px 30px;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 4px;
+  margin-bottom: 15px;
+}
+
+/* --- BEST 3 枠内の左右レイアウト --- */
+.best3-container {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  align-items: center;
+}
+
+.ranking-box {
+  flex: 1;
+  min-width: 0;
+}
+
+.ranking-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+.ranking-item:last-child {
+  margin-bottom: 0;
+}
+
+.ranking-item:hover {
+  background-color: #f3ebe1;
+}
+
+.rank-num {
+  font-size: 28px;
+  font-family: 'Georgia', serif;
+  width: 40px;
+  text-align: center;
+  margin-right: 15px;
+  position: relative;
+}
+
+/* 1位の王冠マーク */
+.rank-1 .rank-num span {
+  position: relative;
+  z-index: 2;
+}
+.rank-1 .crown {
+  position: absolute;
+  top: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 45px;
+  height: 35px;
+  background-color: #ffe082;
+  clip-path: polygon(0% 100%, 100% 100%, 100% 20%, 80% 50%, 50% 0%, 20% 50%, 0% 20%);
+  z-index: 1;
+}
+
+.rank-text {
+  font-size: 14px;
+  font-weight: bold;
+}
+.rank-suffix {
+  font-size: 15px;
+  margin-right: 10px;
+  font-weight: normal;
+}
+
+/* --- 枠線内に収まる吹出しエリア --- */
+.hover-detail-area {
+  width: 290px;
+  height: 160px; /* 💡 元の高さに戻して「BEST3」との隙間や全体の高さを一切変えないように固定！ */
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 🟢 横長○（カプセル型）の吹き出し */
+.oval-bubble {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  
+  /* 💡 ここで緑の吹き出し全体の縦幅を大きく調整しています！ */
+  padding: 35px 22px; /* 上下のパディングを増やして縦に大きく膨らませました */
+  
+  box-sizing: border-box;
+  background-color: #b2dfdb;
+  border-radius: 45px; /* 💡 縦幅に合わせてふっくら丸みを調整 */
+  
+  opacity: 0;
+  transform: translateY(-50%) scale(0.9);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+
+/* 左向きの三角しっぽ */
+.oval-bubble::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -10px;
+  transform: translateY(-50%);
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right: 12px solid #b2dfdb;
+}
+
+.oval-bubble p {
+  font-size: 14.5px; /* 💡 絶妙に読みやすい文字サイズのままキープ！ */
+  line-height: 1.6;
+  color: #5d4037;
+  text-align: left;
+  margin: 0;
+}
+
+/* 💡 ホバー時の表示切り替え */
+.best3-container:has(.rank-1:hover) .detail-1,
+.best3-container:has(.ranking-item[data-rank="2"]:hover) .detail-2,
+.best3-container:has(.ranking-item[data-rank="3"]:hover) .detail-3 {
+  opacity: 1;
+  transform: translateY(-50%) scale(1);
+}
+
+/* --- その他 中身 --- */
+.others-list {
+  list-style: none;
+}
+.others-list li {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+}
+.others-list li::before {
+  content: "";
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border: 1px solid #5d4037;
+  border-radius: 50%;
+  margin-right: 15px;
+  flex-shrink: 0;
+}
+
+.etc-text {
+  text-align: left;
+  padding-left: 27px;
+  font-size: 13px;
+  margin-top: 10px;
+  color: #795548;
+}
+
+/* --- コンビニあるある --- */
+.aruaru-box {
+  width: 100%;
+  max-width: 1000px;
+  background-color: #b2dfdb;
+  border-radius: 40px;
+  border: 1px dashed #80cbc4;
+  padding: 25px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 50px;
+}
+
+.aruaru-main {
+  width: 45%;
+  flex-shrink: 0;
+}
+.aruaru-main h3 {
+  font-size: 18px;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+.aruaru-main p {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.aruaru-sub {
+  background-color: #f3ebe1;
+  border-radius: 20px;
+  padding: 15px;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+/* --- フッター注釈 --- */
+.footer-note {
+  width: 100%;
+  max-width: 250px;
+  border: 1px solid #e0d7cd;
+  padding: 8px;
+  text-align: center;
+  font-size: 10px;
+  color: #8d6e63;
+  margin-bottom: 20px;
+}
+
+/* --- レスポンシブ（スマホ・タブレット対応） --- */
+@media (max-width: 768px) {
+  .best3-container {
+    flex-direction: column;
+  }
+  .hover-detail-area {
+    width: 100%;
+    max-width: 280px;
+    height: 140px;
+  }
+  .oval-bubble::before {
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-right: 8px solid transparent;
+    border-left: 8px solid transparent;
+    border-bottom: 12px solid #b8ebd0;
+    border-top: none;
+  }
+}
+
+@media (max-width: 550px) {
+  .container {
+    padding: 30px 20px;
+  }
+  .content-box {
+    padding: 25px 20px;
+  }
+  .section-title {
+    font-size: 35px;
+    margin-bottom: 60px;
+  }
+  .section-title::before,
+  .section-title::after {
+    letter-spacing: -1px;
+  }
+  .aruaru-box {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+  }
+  .aruaru-main {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .aruaru-sub {
+    width: 100%;
+  }
+}
+
+@media (max-width: 402px) {
+  .container {
+    padding: 20px 15px;
+  }
+  .home-btn {
+    top: 15px;
+    right: 15px;
+    padding: 8px;
+  }
+  .section-title {
+    font-size: 22px;
+    margin-bottom: 60px;
+  }
+  .section-title::before,
+  .section-title::after {
+    letter-spacing: 5px;
+  }
+  .content-box {
+    padding: 20px 15px;
+  }
+  .badge-best3 {
+    font-size: 16px;
+    padding: 6px 20px;
+    border-radius: 12px;
+    letter-spacing: 2px;
+  }
+  .badge-others {
+    font-size: 14px;
+    padding: 6px 20px;
+    border-radius: 8px;
+    letter-spacing: 2px;
+  }
+  .ranking-item {
+    margin-bottom: 20px;
+  }
+  .rank-num {
+    font-size: 24px;
+  }
+  .rank-text {
+    font-size: 12px;
+  }
+  .others-list li {
+    font-size: 12px;
+    margin-bottom: 12px;
+  }
+  .others-list li::before {
+    margin-right: 10px;
+  }
+  .aruaru-box {
+    border-radius: 30px;
+    padding: 15px;
+    margin-bottom: 35px;
+  }
+  .aruaru-main h3 {
+    font-size: 16px;
+  }
+  .aruaru-main p {
+    font-size: 13px;
+  }
+  .aruaru-sub {
+    width: 100%;
+    font-size: 10px;
+  }
+}
