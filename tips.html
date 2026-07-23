@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>楽しむコツ - コンビニバイト</title>
+  <link rel="stylesheet" href="css/tips.css">
+</head>
+<body>
+
+  <div class="container">
+    <!-- ホームに戻るボタン -->
+    <a href="index.html" class="home-btn">
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#5d4037" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+    </a>
+
+    <!-- タイトル -->
+    <h1 class="section-title">楽しむコツ</h1>
+
+    <!-- レイアウトの親要素 -->
+    <div class="tips-layout">
+      
+      <!-- ① テキストボックス (5つのカードを用意・JSで切替) -->
+      <div class="tips-card-container">
+        
+        <!-- コツ 1 -->
+        <div class="tips-card active">
+          <h2 class="card-title">お客さんと関わる</h2>
+          <p class="card-text">話しかけてくれるお客さんやノリの良い常連さんとは、長くなりすぎない程度に軽く会話をすると接客がグッと楽しく感じられます！「髪の毛切りましたか？」なんてお友達感覚で話せるのも魅力です♪</p>
+        </div>
+
+        <!-- コツ 2 -->
+        <div class="tips-card">
+          <h2 class="card-title">掃除で気分転換</h2>
+          <p class="card-text">掃除の時間は比較的1人で集中して作業できる貴重な時間です！接客から少し離れて、黙々と作業することで良い気分転換になります。退勤後の楽しみを妄想しながら掃除するのもオススメです♪</p>
+        </div>
+
+        <!-- コツ 3 -->
+        <div class="tips-card">
+          <h2 class="card-title">シフトが被っている人との会話</h2>
+          <p class="card-text">お客さんの来店が少ない時間帯には、同じシフトの人と少しだけお話することができます。性別、年齢、レギュラーか単発かなど、人のバリエーションも豊富です。
+「今日はこの人と同じシフトだ！」とテンションが上がる日もあります♪初対面の方と話す機会も多い為、コミュニケーション能力の向上にもつながります！</p>
+        </div>
+
+        <!-- コツ 4 -->
+        <div class="tips-card">
+          <h2 class="card-title">テキパキ作業のゲーム化</h2>
+          <p class="card-text">レジ打ちや袋詰め、レジ横ホットスナックの補充などを「いかに素早く綺麗にできるか」自分の中でタイムアタックゲームにすると、あっという間にシフト時間が過ぎちゃいます！レジ打ちは間違えないように注意してやります！</p>
+        </div>
+
+        <!-- コツ 5 -->
+        <div class="tips-card">
+          <h2 class="card-title">前出しや顔出しの時間の商品見物</h2>
+          <p class="card-text">お客さんが少ない時間、前出し顔出しをしながら新商品や期間限定の商品を見て「あとで買おうかな」と考えるのも楽しみのひとつです。
+私は最近商品に書いてあるカロリー表示を見て買うか買わないかの葛藤を脳内でしています♪</p>
+        </div>
+
+      </div>
+
+      <!-- ② 画像エリア (1枚のシンプルな枠に変更) -->
+      <div class="visual-container">
+        <button class="arrow-btn prev-btn" id="prevSlide" aria-label="前へ"><span class="arrow-icon"></span></button>
+
+        <div class="image-window">
+         
+          <img src="img/会話.png" alt="会話イラスト" class="slide-img active">
+          <img src="img/掃除.png" alt="掃除イラスト" class="slide-img">
+          <img src="img/シフト会話.png" alt="新商品イラスト" class="slide-img">
+          <img src="img/丁寧.png" alt="レジ打ちイラスト" class="slide-img">
+          <img src="img/カロリー.png" alt="仲間イラスト" class="slide-img">
+        </div>
+
+        <button class="arrow-btn next-btn" id="nextSlide" aria-label="次へ"><span class="arrow-icon"></span></button>
+      </div>
+
+    </div>
+
+    <!-- なぞなぞコーナー ② -->
+    <div class="nazonazo-box">
+      <div class="nazonazo-content">
+        <h3>なぞなぞ ②</h3>
+        <p>コンビニで一番びっくりする丸い食べ物は？</p>
+      </div>
+      <button class="answer-btn" id="answerBtn">答え</button>
+    </div>
+
+    <!-- フッター注釈 -->
+    <footer class="footer-note">
+      <p>これはすべて個人の意見です</p>
+    </footer>
+  </div>
+
+  <script src="js/js/script.js"></script>
+</body>
+</html>
