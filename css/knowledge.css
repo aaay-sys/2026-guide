@@ -30,11 +30,11 @@ body {
 
 .home-btn {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 100px;
+  right: 15px;
   background-color: #f3ebe1;
-  border-radius: 12px;
-  padding: 10px;
+  border-radius: 20px;
+  padding: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -52,10 +52,10 @@ body {
 
 /* タイトルエリア（スマホ・PC切り替え） */
 .section-title {
-  font-size: 40px;
+  font-size: 35px;
   position: relative;
   display: inline-block;
-  margin-top: 60px;
+  margin-top: 100px;
   margin-bottom: 40px;
   letter-spacing: 4px;
 }
@@ -152,7 +152,7 @@ mark.marker {
 /* --- コンビニあるある（スマホ版） --- */
 .aruaru-box {
   width: 100%;
-  max-width: 700px;
+  max-width: 1100px;
   background-color: #b2dfdb;
   border-radius: 35px;
   border: 1px dashed #80cbc4;
@@ -188,7 +188,7 @@ mark.marker {
 /* --- フッター --- */
 .footer-note {
   width: 100%;
-  max-width: 250px;
+  max-width: 1100px;
   border: 1px solid #e0d7cd;
   padding: 8px;
   text-align: center;
@@ -303,6 +303,7 @@ mark.marker {
   .section-title::before, .section-title::after {
     content: "---";
     margin: 0 5px;
+    letter-spacing: -1px;
   }
 
   .aruaru-box {
